@@ -22,7 +22,11 @@ class SectionItem {
 class MovieItem {
     final String title;
     final String image;
+<<<<<<< HEAD
     final double popularity;
+=======
+    final String popularity;
+>>>>>>> 830b9a892d3068f257aad9bd094529996216ca48
     final String releaseDate;
 
     MovieItem({
@@ -36,6 +40,7 @@ class MovieItem {
         return MovieItem(
             title: json['title'],
             image: json['poster_path'],
+<<<<<<< HEAD
             popularity: json['vote_average'],
             releaseDate: json['release_date'],
         );
@@ -60,6 +65,18 @@ class TvItem {
             title: json['name'],
             image: json['poster_path'],
             popularity: json['vote_average'],
+=======
+            popularity: json['vote_average'].toString(),
+            releaseDate: json['release_date'],
+        );
+    }
+
+    factory MovieItem.tvFromJson(Map<String, dynamic> json) {
+        return MovieItem(
+            title: json['name'],
+            image: json['poster_path'],
+            popularity: json['vote_average'].toString(),
+>>>>>>> 830b9a892d3068f257aad9bd094529996216ca48
             releaseDate: json['first_air_date'],
         );
     }
@@ -79,7 +96,11 @@ Future<List<dynamic>> popularMovies() async {
         // If the server did return a 200 OK response,
         // then parse the JSON.
 
+<<<<<<< HEAD
         for(int n = 0; n < json.decode(response.body)['results'].length - 2; n++) {
+=======
+        for(int n = 0; n < json.decode(response.body)['results'].length; n++) {
+>>>>>>> 830b9a892d3068f257aad9bd094529996216ca48
             movieItemList.add(MovieItem.fromJson(json.decode(response.body)['results'][n]));
         }
 
@@ -101,6 +122,7 @@ Future<List<dynamic>> popularSeries() async {
         });
 
     if (response.statusCode == 200) {
+<<<<<<< HEAD
         final List tvItemList = [];
         // If the server did return a 200 OK response,
         // then parse the JSON.
@@ -110,6 +132,18 @@ Future<List<dynamic>> popularSeries() async {
         }
 
         return tvItemList;
+=======
+        final List movieItemList = [];
+
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+
+        for(int n = 0; n < json.decode(response.body)['results'].length; n++) {
+            movieItemList.add(MovieItem.tvFromJson(json.decode(response.body)['results'][n]));
+        }
+
+        return movieItemList;
+>>>>>>> 830b9a892d3068f257aad9bd094529996216ca48
     } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
