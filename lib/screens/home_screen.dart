@@ -27,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: ListView(
+            clipBehavior: Clip.none,
             children: [
               const NavBar(),
               const SizedBox(

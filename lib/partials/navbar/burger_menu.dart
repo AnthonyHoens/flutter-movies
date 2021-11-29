@@ -14,7 +14,6 @@ class _BurgerMenuState extends State<BurgerMenu> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        popularSeries();
         Scaffold.of(context).openDrawer();
       },
       child: Container(

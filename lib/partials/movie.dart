@@ -8,7 +8,6 @@ class Movie extends StatelessWidget {
   const Movie(this._movieItem, {Key? key}) : super(key: key);
 
 
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,7 +47,7 @@ class Movie extends StatelessWidget {
                 horizontal: 5,
               ),
               child: Text(
-                _movieItem.releaseDate,
+                DateFormat("d MMMM y").format(DateTime.parse(_movieItem.releaseDate)),
                 textWidthBasis: TextWidthBasis.parent,
                 style: movieDateStyle,
               ),
