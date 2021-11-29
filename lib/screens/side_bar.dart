@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movies/constants.dart';
+import 'package:movies/partials/avatar.dart';
+import 'package:movies/styles/constants.dart';
+import 'package:movies/models/data_item.dart';
+import 'package:movies/partials/menu_item.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -27,56 +30,44 @@ class _SideBarState extends State<SideBar> {
             bottomRight: Radius.circular(34),
           )),
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 24,
-          horizontal: 34,
-        ),
+        padding: const EdgeInsets.all(25),
         child: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildMenuItem('Home', Icon(Icons.home), homeGradientButton, () { print('Home'); }),
-              _buildMenuItem('Profil', Icon(Icons.account_circle_rounded), profilGradientButton, () { print('Profil'); }),
-              _buildMenuItem('Paramètres', Icon(Icons.settings), settingsGradientButton, () { print('Paramètres'); }),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 40.0),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Avatar(50, 50),
+                    const SizedBox(width: 20),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const [
+                        Text(
+                          "Thebester",
+                          style: fontStyleMenuItem,
+                        ),
+                        Text(
+                          "HEPL - DAM",
+                          style: fontStyleLegend,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              MenuItem(menuItemsData[0]),
+              MenuItem(menuItemsData[1]),
+              MenuItem(menuItemsData[2]),
               const Spacer(),
-              _buildMenuItem('Se déconnecter', const Icon(Icons.logout, color: Colors.red), logoutGradientButton, () { print('Disconnect'); }
-              )
+              MenuItem(menuItemsData[3]),
             ],
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildMenuItem(String _text, Icon _icon, LinearGradient _gradient, _onPressedFunction) {
-    return Row(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            vertical: 10,
-          ),
-          child: Container(
-            decoration: BoxDecoration(
-                gradient: _gradient,
-                borderRadius: const BorderRadius.all(
-                    Radius.circular(12)
-                )
-            ),
-            child: IconButton(
-              icon: _icon,
-              color: Colors.white,
-              onPressed: _onPressedFunction,
-            ),
-          ),
-        ),
-        const SizedBox(
-          width: 12,
-        ),
-        Text(
-          _text,
-          style: fontStyleMenuItem,
-        ),
-      ],
     );
   }
 }

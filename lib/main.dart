@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies/constants.dart';
+import 'package:movies/styles/constants.dart';
 import 'package:movies/screens/home_screen.dart';
-import 'package:movies/screens/side_bar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,6 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/payment' : (context) => Container(),
+        '/settings' : (context) => Container(),
+        '/user' : (context) => Container(),
+      },
       title: 'Movies App',
       theme: ThemeData(
         // This is the theme of your application.
@@ -29,7 +34,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const Scaffold(
         backgroundColor: mainBackgroundColor,
-        body: SideBar(),
+        body: HomeScreen(),
       ),
     );
   }
