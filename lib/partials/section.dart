@@ -35,11 +35,7 @@ class Section extends StatelessWidget {
                   ),
                 );
               } else {
-<<<<<<< HEAD
-                return Center(child: const CircularProgressIndicator());
-=======
                 return const Center(child: CircularProgressIndicator());
->>>>>>> 830b9a892d3068f257aad9bd094529996216ca48
               }
             },
         )
