@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:movies/models/section_item.dart';
+import 'package:movies/models/movie_slider_item.dart';
 import 'package:movies/partials/navbar/nav_bar.dart';
-import 'package:movies/partials/section.dart';
+import 'package:movies/partials/slider/movie_slider.dart';
 import 'package:movies/screens/side_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -19,23 +19,20 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBody: true,
-      extendBodyBehindAppBar: true,
       key: _scaffoldKey,
       drawer: const SideBar(),
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: ListView(
-            clipBehavior: Clip.none,
+        bottom: false,
+        child: SingleChildScrollView(
+          child: Column(
             children: [
               const NavBar(),
               const SizedBox(
-                height: 40,
+                height: 30,
               ),
-              Section(sectionItemData[0]),
-              const SizedBox(height: 30),
-              Section(sectionItemData[1]),
+              MovieSlider(movieSliderItemData[0]),
+              const SizedBox(height: 20),
+              MovieSlider(movieSliderItemData[1]),
             ],
           ),
         ),

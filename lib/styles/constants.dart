@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 const mainBackgroundColor =  Color(0xFFeaeaea);
 const mainColor = Color(0xFF244d5f);
+const secondColor = Color(0xFF797F8A);
+const thirdColor = Color(0xFFFF6978);
+const mainFontFamily = "main";
 
 const fontStyleMenuItem = TextStyle(
     fontFamily: "main",
@@ -86,4 +89,86 @@ List<BoxShadow> boxShadowItem = [
 
 const BorderRadius borderRadiusItem = BorderRadius.all(
     Radius.circular(10)
+);
+
+const kVoteStyle = TextStyle(
+  fontFamily: "main",
+  fontWeight: FontWeight.bold,
+  color: mainColor,
+  fontSize: 15.0,
+  decoration: TextDecoration.none,
+);
+// Text Styles
+const kLargeTitleStyle = TextStyle(
+  fontSize: 28.0,
+  fontWeight: FontWeight.bold,
+  color: mainColor,
+  fontFamily: "main",
+  decoration: TextDecoration.none,
+);
+const kTitle1Style = TextStyle(
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+  color: mainColor,
+  fontFamily: "main",
+  decoration: TextDecoration.none,
+);
+
+const kTitleSection = TextStyle(
+  fontSize: 22.0,
+  fontWeight: FontWeight.normal,
+  color: mainColor,
+  fontFamily: "main",
+  decoration: TextDecoration.none,
+);
+
+const kCardTitleStyle = TextStyle(
+  fontFamily: "main",
+  fontWeight: FontWeight.bold,
+  color: mainColor,
+  fontSize: 15.0,
+  decoration: TextDecoration.none,
+);
+
+const kTagLineStyle = TextStyle(
+  fontFamily: "main",
+  fontWeight: FontWeight.w400,
+  fontStyle: FontStyle.italic,
+  color: secondColor,
+  fontSize: 15.0,
+  decoration: TextDecoration.none,
+);
+
+const kGenreStyle = TextStyle(
+  fontFamily: "main",
+  fontWeight: FontWeight.w400,
+  fontStyle: FontStyle.normal,
+  color: thirdColor,
+  fontSize: 15.0,
+  decoration: TextDecoration.none,
+);
+const kSubtitleStyle = TextStyle(
+  fontSize: 16.0,
+  color: secondColor,
+  fontFamily: "main",
+  decoration: TextDecoration.none,
+);
+const kCardSubtitleStyle = TextStyle(
+  fontFamily: "main",
+  color: Color(0xE6FFFFFF),
+  fontSize: 13.0,
+  decoration: TextDecoration.none,
+);
+const kCaptionLabelStyle = TextStyle(
+  fontSize: 12.0,
+  color: secondColor,
+  fontFamily: "main",
+  decoration: TextDecoration.none,
+);
+
+var kLoginInputTextStyle = TextStyle(
+  fontSize: 15.0,
+  color: Colors.black.withOpacity(0.3),
+  fontFamily: "main",
+  decoration: TextDecoration.none,
 );

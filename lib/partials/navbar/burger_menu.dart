@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movies/models/section_item.dart';
 import 'package:movies/styles/constants.dart';
 
 class BurgerMenu extends StatefulWidget {

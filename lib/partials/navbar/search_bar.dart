@@ -11,39 +11,39 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-        borderRadius: borderRadiusItem,
-        boxShadow: boxShadowItem,
-        color: Colors.white,
-      ),
-      child: Row(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.45,
-            height: 20,
-            child: const TextField(
-              scrollPadding: EdgeInsets.all(0),
-              decoration: InputDecoration(
-                icon: Icon(
-                  Icons.search,
-                  size: 20,
-                  color: Colors.black,
-                ),
-                hintText: "Rechercher...",
-                contentPadding: EdgeInsets.all(0),
-                focusColor: Colors.black,
-                border: InputBorder.none,
-                isDense: true,
-              ),
+    return Expanded(
+      child: Container(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8,
+          horizontal: 11,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: borderRadiusItem,
+          boxShadow: boxShadowItem,
+        ),
+        child: TextField(
+          onChanged: (text) {
+            print(text);
+          },
+          scrollPadding: const EdgeInsets.all(0),
+          decoration: const InputDecoration(
+            icon: Icon(
+              Icons.search,
+              size: 20,
+              color: mainColor,
             ),
+            hintText: "Rechercher...",
+            hintStyle: TextStyle(
+              fontSize: 17,
+              color: mainColor,
+            ),
+            contentPadding: EdgeInsets.all(0),
+            focusColor: Colors.black,
+            border: InputBorder.none,
+            isDense: true,
           ),
-          const Icon(
-            Icons.mic,
-            size: 20,
-          ),
-        ],
+        ),
       ),
     );
   }

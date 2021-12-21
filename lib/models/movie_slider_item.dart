@@ -1,16 +1,15 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 String token = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0MWQ3MDI1YWZlNzE5YzUyY2UxZjQ5MTFmODkyOWY4NSIsInN1YiI6IjYxYTNhZjM2YmU0YjM2MDA2YTZmNjZkZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.nMtbEVXphtNTC2pKQ2oFqxoNjp1dFxoLBg1SBSelVa0";
 
-class SectionItem {
+class MovieSliderItem {
     final String _titleText;
     final String _subTitleText;
     final Future<List<dynamic>> _movies;
 
-    SectionItem(this._titleText, this._subTitleText, this._movies);
+    MovieSliderItem(this._titleText, this._subTitleText, this._movies);
 
     Future<List<dynamic>> get movies => _movies;
 
@@ -20,33 +19,53 @@ class SectionItem {
 }
 
 class MovieItem {
+    final int movieId;
     final String title;
-    final String image;
-    final String popularity;
+    final String backdropPath;
+    final String posterPath;
+    final String originalTitle;
+    final String overview;
+    final double popularity;
+    final double voteAverage;
     final String releaseDate;
 
     MovieItem({
-        required this.title,
-        required this.image,
-        required this.popularity,
-        required this.releaseDate,
+        this.movieId = 0,
+        this.title = '',
+        this.backdropPath = '',
+        this.posterPath = '',
+        this.originalTitle = '',
+        this.overview = '',
+        this.popularity = 0,
+        this.voteAverage = 0,
+        this.releaseDate = '',
     });
 
     factory MovieItem.fromJson(Map<String, dynamic> json) {
         return MovieItem(
-            title: json['title'],
-            image: json['poster_path'],
-            popularity: json['vote_average'].toString(),
-            releaseDate: json['release_date'],
+            movieId: json['id'] ?? 0,
+            title: json['title'] ?? '',
+            backdropPath: json['backdrop_path'] ?? '',
+            posterPath: json['poster_path'] ?? '',
+            originalTitle: json['original_title'] ?? '',
+            overview: json['overview'] ?? '',
+            popularity: json['popularity'].toDouble() ?? 0,
+            voteAverage: json['vote_average'].toDouble() ?? 0,
+            releaseDate: json['release_date'] ?? '',
         );
     }
 
     factory MovieItem.tvFromJson(Map<String, dynamic> json) {
         return MovieItem(
-            title: json['name'],
-            image: json['poster_path'],
-            popularity: json['vote_average'].toString(),
-            releaseDate: json['first_air_date'],
+            movieId: json['id'] ?? 0,
+            title: json['name'] ?? '',
+            backdropPath: json['backdrop_path'] ?? '',
+            posterPath: json['poster_path'] ?? '',
+            originalTitle: json['original_name'] ?? '',
+            overview: json['overview'] ?? '',
+            popularity: json['popularity'].toDouble() ?? 0,
+            voteAverage: json['vote_average'].toDouble() ?? 0,
+            releaseDate: json['first_air_date'] ?? '',
         );
     }
 }
@@ -73,7 +92,7 @@ Future<List<dynamic>> popularMovies() async {
     } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
-        throw Exception('Failed to load movies');
+        throw Exception('Oups ! ${response.statusCode} - ${response.reasonPhrase}');
     }
 }
 
@@ -100,17 +119,17 @@ Future<List<dynamic>> popularSeries() async {
     } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
-        throw Exception('Failed to load Series');
+        throw Exception('Oups ! ${response.statusCode} - ${response.reasonPhrase}');
     }
 }
 
-List<SectionItem> sectionItemData = [
-    SectionItem(
+List<MovieSliderItem> movieSliderItemData = [
+    MovieSliderItem(
         "Films populaires",
         "Cette semaine",
         popularMovies(),
     ),
-    SectionItem(
+    MovieSliderItem(
         "Séries populaires",
         "Cette semaine",
         popularSeries(),

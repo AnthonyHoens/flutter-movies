@@ -8,14 +8,26 @@ class NavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        BurgerMenu(),
-        SearchBar(),
-        Icon(Icons.notifications),
-        Avatar(36, 36),
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: const [
+          BurgerMenu(),
+          SizedBox(
+            width: 20,
+          ),
+          SearchBar(),
+          SizedBox(
+            width: 20,
+          ),
+          Icon(Icons.notifications),
+          SizedBox(
+            width: 20,
+          ),
+          Avatar(36, 36),
+        ],
+      ),
     );
   }
 }
